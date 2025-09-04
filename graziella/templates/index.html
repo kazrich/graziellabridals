@@ -667,7 +667,7 @@ body {
   .overlay-slide {
     box-shadow: none;
     border: 2px solid rgba(255,255,255,0.6);
-    border-radius: 10px;
+    border-radius: 0px;
     transition: transform 0.3s ease;
   }
 
@@ -748,7 +748,7 @@ body {
   left: 50%;
   width: 220px; /* Increased size from 160px */
   height: auto; /* Optional: preserve aspect ratio */
-  border-radius: 16px; /* Slightly smoother corners for visual elegance */
+  border-radius: 0px; /* Slightly smoother corners for visual elegance */
   object-fit: contain;
   box-shadow: 0 10px 32px rgba(255, 215, 0, 0.4); /* More depth */
   opacity: 1;
@@ -772,7 +772,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 0px;
   opacity: 0;
   transform: translateX(150px);
   transition: transform 2.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 2.5s ease;
@@ -1112,7 +1112,7 @@ body {
   background-color: #d4af37;
   color: rgb(255, 255, 255);
   text-decoration: none;
-  border-radius: 50px;
+  border-radius: 0px;
   font-size: 1rem;
   transition: background-color 0.3s ease;
 }
@@ -1201,7 +1201,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 0px;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.5s ease-in-out;
@@ -1265,7 +1265,7 @@ body {
 /* bridal gowns */
 .image-container {
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 0px;
     box-shadow: 0 4px 16px rgba(0,0,0,0.08);
 }
 
@@ -1334,18 +1334,8 @@ body {
 }
 
 
-/* WRAPPERS FOR NEW PRODUCTS */
-.category-card .image-wrapper {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-}
 
-.category-card .image-wrapper:hover {
-    transform: scale(1.03);
-}
+
 
 .overlay-text {
     position: absolute;
@@ -1361,6 +1351,7 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 5px;
+
 }
 
 .product-count {
@@ -1381,14 +1372,14 @@ body {
     width: 100%;
     cursor: pointer;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 0px;
 }
 
 .photo-item img {
     width: 100%;
     height: 250px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 0px;
 }
 
 .photo-item:hover img {
@@ -1403,7 +1394,7 @@ body {
     background: #d4af37(255, 102, 153, 0.8);
     color: white;
     padding: 5px 10px;
-    border-radius: 5px;
+    border-radius: 0px;
     font-size: 14px;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
@@ -1444,13 +1435,97 @@ body {
 
 
 
+/* Image wrapper styling */
+.category-card .image-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+
+
+/* Overlay text directly on GIF */
+.overlay-text {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  text-align: center;
+  padding: 1rem 2rem;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.overlay-text h3 {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.overlay-text p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Grow/Shrink for category-title */
+@keyframes pulseText {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.category-title {
+  animation: pulseText 2s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* Fly-in for product-count */
+@keyframes flyIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.product-count {
+  animation: flyIn 4s ease-out forwards;
+  opacity: 0; /* Start hidden */
+}
+
+
+/* Responsive stacking */
+@media (max-width: 991.98px) {
+  .text-card h3 {
+    font-size: 36px;
+  }
+  
+
+  .text-card p {
+    font-size: 15px;
+  }
+
+  .overlay-text {
+    bottom: 5%;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.85rem;
+  }
+
+  .overlay-text h3 {
+    font-size: 1.2rem;
+  }
+}
+
+
+
 /* 💎 Inquiry Button Styling */
 .btn-inquire {
   background-color: #d4af37; /* Luxe gold */
   color: white;
   padding: 12px 25px;
   font-size: 1.1rem;
-  border-radius: 30px;
+  border-radius: 0px;
   text-decoration: none;
   font-family: 'Cinzel', serif;
   box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
@@ -1735,7 +1810,7 @@ body {
   padding: 1rem 1.5rem;
   font-size: 1rem;
   border: 2px solid #DAA520;
-  border-radius: 10px;
+  border-radius: 0px;
   background-color: #fff;
   color: #333;
   box-shadow: 0 4px 6px rgba(0,0,0,0.05);
@@ -1755,7 +1830,7 @@ body {
 .gb-time-select {
   padding: 0.6rem 1rem;
   border: 2px solid #DAA520;
-  border-radius: 30px;
+  border-radius: 0px;
   background-color: #fff;
   color: #333;
   font-weight: bold;
@@ -1802,7 +1877,7 @@ body {
 
 /* Button hover styles */
 .booking-submit {
-  border-radius: 30px;
+  border-radius: 0px;
   background-color: #DAA520;
   border: none;
   color: white;
@@ -1816,7 +1891,7 @@ body {
 }
 
 .booking-cancel {
-  border-radius: 30px;
+  border-radius: 0px;
   background-color: #ccc;
   border: none;
   color: #333;
@@ -2091,6 +2166,88 @@ body {
   }
 }
 
+/* === Blog Section === */
+.blog-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 0px;
+  transition: transform 0.3s ease;
+}
+
+
+.blog-card {
+  background-color: #fff;
+  border-radius: 0px;
+  overflow: hidden;
+
+}
+
+.blog-image {
+  transition: transform 0.5s ease-in-out;
+}
+
+.blog-image:hover {
+  transform: scale(1.1);
+}
+
+
+.blog-image {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+}
+
+.blog-image.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.blog-content {
+  padding: 20px;
+}
+
+.blog-category {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #d4af37;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.blog-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 10px 0;
+  font-family: 'Georgia', serif;
+  color: #333;
+}
+
+.blog-meta {
+  font-size: 0.85rem;
+  color: #777;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+@media (min-width: 1200px) {
+  .blog-card {
+    min-height: 500px; /* Taller card for desktop */
+  }
+
+  .blog-image-wrapper {
+    height: 300px; /* Bigger image area */
+  }
+
+  .blog-image {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
 
 
 
@@ -2301,70 +2458,74 @@ function saveThenLogout() {
 
 
 <!-- Premier Designers Section -->
-<section id="bridal-collection" style="background-color: #000000; padding: 40px 20px;">
+<section id="blog-section" style=" padding: 60px 20px;">
   <div class="container">
-    <h2 class="text-center mb-5" style="font-family: 'Killery Bentom DEMO VERSION', cursive; font-size: 40px; color: #ffffff;">
-      Our Collections<br>
-      <span style="font-size: 30px; font-weight: 500; font-family: 'Georgia', serif;">
-        Beyond Bridal: Explore More
-      </span>
-      <p style="font-size: 18px; line-height: 1.6; color: #ffffff; font-family: 'Segoe UI', sans-serif; max-width: 800px; margin: 0 auto;">
+    <div class="text-center mb-5">
+      <h2 style="font-family: 'Killery Bentom DEMO VERSION', cursive; font-size: 40px; color: #000;">
+        From Products Section
+      </h2>
+      <p style="font-size: 18px; font-family: 'Segoe UI', sans-serif; color: #555;">
         While bridal gowns may be our signature, we’re here for every dazzling moment. Browse through our <strong>Serenity Sets</strong> collection for stylish bags, sparkling jewelry, and more. For our prom queens and elegant evening looks, explore <strong>Second Looks</strong>  tailored to turn heads. Planning with your bridal squad? Our <strong>Prom, Changing, Evening Dresses</strong> & <strong>Maids Package</strong> are ready to make the prep just as picture-perfect.
       </p>
-      <p style="font-size: 20px; line-height: 1.6; color: #ffffff; font-family: 'Courier New'; max-width: 800px; margin: 0 auto; font-weight: bolder;">...much more...</p>
-    </h2>
+    </div>
 
-    <div id="mobile-collection-display" class="row justify-content-center align-items-stretch gy-5">
+    <div class="row gy-5">
+      <!-- Blog Post 1 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="blog-card">
+          <div class="blog-image-wrapper">
+            <img src="{% static 'bridals/img/ring3.jpeg' %}" class="blog-image active" alt="Spring Dresses 1">
+            <img src="{% static 'bridals/img/ear1.jpeg' %}" class="blog-image" alt="Prom 3" />
+            <img src="{% static 'bridals/img/neck3.jpeg' %}" class="blog-image" alt="Spring Dresses 2">
+            <img src="{% static 'bridals/img/brace2.jpeg' %}" class="blog-image" alt="Spring Dresses 3">
+          </div>
+          <div class="blog-content">
+            <span class="blog-category">Serenity Sets</span>
+            <h4 class="blog-title">Adorn the Moment: Serenity Sets of Sparkle, Grace & Forever</h4>
+            <p class="blog-meta">From GRAZIELLA Shore • 2025</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog Post 2 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="blog-card">
+          <div class="blog-image-wrapper">
+            <img src="{% static 'bridals/img/maid2.jpeg' %}" class="blog-image active" alt="Spring Dresses 1">
+            <img src="{% static 'bridals/img/prom1.jpeg' %}" class="blog-image" alt="Spring Dresses 2">
+            <img src="{% static 'bridals/img/evening3.jpeg' %}" class="blog-image" alt="Spring Dresses 3">
+          </div>
+          <div class="blog-content">
+            <span class="blog-category">Second Looks</span>
+            <h4 class="blog-title">Second Looks That Steal the Spotlight: Prom, Changing & Evening Elegance</h4>
+            <p class="blog-meta">From GRAZIELLA Shore • 2025</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog Post 3 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="blog-card">
+          <div class="blog-image-wrapper">
+            <img src="{% static 'bridals/img/lip1.jpeg' %}" class="blog-image active" alt="Spring Dresses 1">
+            <img src="{% static 'bridals/img/perfumes5.jpeg' %}" class="blog-image" alt="Spring Dresses 2">
+            <img src="{% static 'bridals/img/Lipg5.jpeg' %}" class="blog-image" alt="Spring Dresses 3">
+          </div>
+          <div class="blog-content">
+            <span class="blog-category">Cosmetics</span>
+            <h4 class="blog-title">Cosmetics That Complete the Look: From Lip Gloss to Luxe Scents</h4>
+            <p class="blog-meta">From GRAZIELLA Shore • 2025</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
       
-      <!-- Collection 1 -->
-      <div class="col-md-6 col-lg-4 collection-item">
-        <div class="card border-0 h-100 mx-auto" style="max-width: 90%; background-color: transparent;">
-          <div class="image-container"  id="ups">
-            <img src="{% static 'bridals/img/ring3.jpeg' %}" class="gallery-image active" alt="Prom 1" />
-            <img src="{% static 'bridals/img/neck3.jpeg' %}" class="gallery-image" alt="Prom 2" />
-            <img src="{% static 'bridals/img/ear1.jpeg' %}" class="gallery-image" alt="Prom 3" />
-            <img src="{% static 'bridals/img/brace2.jpeg' %}" class="gallery-image" alt="Prom 3" />
-          </div>
-          <div class="text-container">
-            <h4 class="gallery-title" style="font-family: 'Georgia', serif; color: white; font-size: 15px;">Serenity Sets</h4>
-          </div>
-        </div>
-      </div>
-
-      <!-- Collection 2 -->
-      <div class="col-md-6 col-lg-4 collection-item">
-        <div class="card border-0 h-100 mx-auto" style="max-width: 90%; background-color: transparent;">
-          <div class="image-container"  id="ups">
-            <img src="{% static 'bridals/img/maid2.jpeg' %}" class="gallery-image active" alt="Prom 1" />
-            <img src="{% static 'bridals/img/prom1.jpeg' %}" class="gallery-image" alt="Prom 2" />
-            <img src="{% static 'bridals/img/evening3.jpeg' %}" class="gallery-image" alt="Prom 3" />
-          </div>
-          <div class="text-container">
-            <h4 class="gallery-title" style="font-family: 'Georgia', serif; color: white; font-size: 15px;">Second Looks</h4>
-          </div>
-        </div>
-      </div>
-
-      <!-- Collection 3 -->
-      <div class="col-md-6 col-lg-4 collection-item">
-        <div class="card border-0 h-100 mx-auto" style="max-width: 90%; background-color: transparent;">
-          <div class="image-container" id="ups">
-            <img src="{% static 'bridals/img/lip1.jpeg' %}" alt="Evening 1" class="gallery-image active" />
-            <img src="{% static 'bridals/img/perfumes5.jpeg' %}" alt="Evening 2" class="gallery-image" />
-            <img src="{% static 'bridals/img/Lipg5.jpeg' %}" alt="Evening 3" class="gallery-image" />
-          </div>
-          <div class="text-container">
-            <h4 class="gallery-title" style="font-family: 'Georgia', serif; color: white; font-size: 15px;">Cosmetics</h4>
-          </div>
-        </div>
-      </div>
-
         <div class="text-center mb-5">
           <a href="{% url 'product' %}" class="btn btn-inquire">
             <i class="fas fa-search"></i> Browser
           </a>
         </div>
-    </div>
   </div>
 </section>
 
@@ -2379,7 +2540,7 @@ function saveThenLogout() {
         We’re all about making bridal dreams shinefrom the stunning styles already on our racks to that one-of-a-kind gown with your name all over it. Your trust inspires us, and we can’t wait to help you glow through every unforgettable moment!
       </p>
       <p style="font-family: 'Segoe UI', sans-serif; font-size: 20px; font-weight: bold;">Say to YES to Graziella Bridals & we serve you</p>
-      <a href="#" class="book-button" data-bs-toggle="modal" data-bs-target="#bookingModal" style="border-radius: 50px;">
+      <a href="#" class="book-button" data-bs-toggle="modal" data-bs-target="#bookingModal">
         BOOK AN APPOINTMENT
       </a>
       <!-- Navigation Dots -->
@@ -2392,9 +2553,9 @@ function saveThenLogout() {
 
     <!-- Image Area -->
     <div class="sent-img">
-      <img src="{% static 'bridals/img/13.jpg' %}" alt="Bridal Image 1" class="slide active">
-      <img src="{% static 'bridals/img/new3.png' %}" alt="Bridal Image 2" class="slide">
-      <img src="{% static 'bridals/img/new2.png' %}" alt="Bridal Image 3" class="slide">
+      <img src="{% static 'bridals/img/Bridal1.jpg' %}" alt="Bridal Image 1" class="slide active">
+      <img src="{% static 'bridals/img/13.jpg' %}" alt="Bridal Image 2" class="slide">
+      <img src="{% static 'bridals/img/Bridal4.jpg' %}" alt="Bridal Image 3" class="slide">
     </div>
   </div>
 </section>
@@ -2552,31 +2713,35 @@ function saveThenLogout() {
 
 <!-- Bridal Gowns Section -->
 <section class="py-5">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-        <div class="text-card p-4 text-center">
-          <h3 class="category-title mb-2" style="font-family: 'Killery Bentom DEMO VERSION'; font-size: 40px;">OUR GOWNS</h3>
-          <p class="product-count" style="color: #000; font-family: 'Segoe UI', sans-serif; font-size: 15px;">
-            Unveil your forever in a gown woven with dreams. Our bridal collection is a symphony of luxurious fabrics and timeless elegance, designed to make your walk down the aisle unforgettable. Whether you're ready to fall in love with a gown to call your own or wish to hire your perfect match for the day it’s all here, waiting to be part of your story.
+  <div class="container-fluid">
+    <div class="row justify-content-center gx-5">
+      <!-- Text Block -->
+      <div class="col-xl-5 col-lg-6 mb-4">
+        <div class="text-card p-5" id="bro">
+          <h3 class="category-title mb-3" style="font-family: 'Killery Bentom DEMO VERSION'; font-size: 48px;">OUR GOWNS</h3>
+          <p class="product-count" style="color: #000; font-family: 'Segoe UI', sans-serif; font-size: 17px; line-height: 1.8;">
+            Unveil your forever in a gown woven with dreams. Our bridal collection is a symphony of luxurious fabrics and timeless elegance, designed to make your walk down the aisle unforgettable. Whether you're ready to fall in love with a gown to call your own or wish to hire your perfect match for the day—it’s all here, waiting to be part of your story.
           </p>
         </div>
       </div>
 
-      <!-- Category Card -->
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-        <div class="category-card text-center">
+      <!-- Image Block -->
+      <div class="col-xl-5 col-lg-6 mb-4">
+        <div class="category-card">
           <div class="image-wrapper">
             <img src="{% static 'bridals/img/wedd.gif' %}" class="img-fluid rounded" alt="Bridal Gown">
             <div class="overlay-text">
               <h3 class="category-title">GRAZIELLA GOWNS</h3>
-              <p class="product-count">more below..</p>
+              <p class="product-count">more below...</p>
             </div>
           </div>
         </div>
-      </div>    
+      </div>
     </div>
+  </div>
 </section>
+
+
 
 
 <!-- Bridal Gowns Gallery Section -->
@@ -2748,6 +2913,18 @@ function saveThenLogout() {
 
 {% if csrf_token %}
 <script>
+
+  document.querySelectorAll('.blog-image-wrapper').forEach(wrapper => {
+    const images = wrapper.querySelectorAll('.blog-image');
+    let index = 0;
+    setInterval(() => {
+      images.forEach(img => img.classList.remove('active'));
+      images[index].classList.add('active');
+      index = (index + 1) % images.length;
+    }, 3000); // Change every 3 seconds
+  });
+
+
 // 🔐 Get CSRF token from cookies
 function getCSRFToken() {
   const name = "csrftoken";
