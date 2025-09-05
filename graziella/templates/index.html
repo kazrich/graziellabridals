@@ -655,18 +655,20 @@ body {
 
 
 
-/* General Banner Layout */
-/* Large screen overlay blending */
 @media screen and (min-width: 992px) {
   .overlay-container {
+    position: absolute;
     top: 30%;
-    right: -80px; /* push it inward toward main image */
+    right: -80px;
     opacity: 0.92;
+    z-index: 6;
   }
 
   .overlay-slide {
+    object-fit: contain;
+    image-rendering: auto;
     box-shadow: none;
-    border: 2px solid rgba(255,255,255,0.6);
+    border: none; /* Removed white border */
     border-radius: 0px;
     transition: transform 0.3s ease;
   }
@@ -675,21 +677,6 @@ body {
     transform: scale(1.03);
   }
 }
-
-/* Initial hidden position */
-.overlay-slide,
-.main-slide {
-  opacity: 0;
-  transform: translateX(150px);
-  transition: transform 2.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 2.5s ease;
-}
-
-.reveal .overlay-slide,
-.reveal .main-slide {
-  opacity: 1;
-  transform: translateX(0);
-}
-
 
 
 /* === Banner Layout === */
@@ -723,7 +710,7 @@ body {
 }
 
 .banner-text span {
-  color: gold;
+  color: #d4af37;
 }
 
 .banner-text p {
@@ -740,20 +727,23 @@ body {
   text-align: center;
   z-index: 6;
   overflow: visible;
+
 }
 
 .overlay-slide {
   position: absolute;
   top: 35%;
   left: 50%;
-  width: 220px; /* Increased size from 160px */
+  width: 320px; /* Increased size from 160px */
   height: auto; /* Optional: preserve aspect ratio */
-  border-radius: 0px; /* Slightly smoother corners for visual elegance */
-  object-fit: contain;
-  box-shadow: 0 10px 32px rgba(255, 215, 0, 0.4); /* More depth */
   opacity: 1;
   transform: translate(-50%, -50%) rotate(0deg);
   transition: transform 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+  object-fit: cover;
+  image-rendering: crisp-edges;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
 }
 
 
@@ -1332,8 +1322,6 @@ body {
         height: 400px;
     }
 }
-
-
 
 
 
@@ -2249,6 +2237,266 @@ body {
 }
 
 
+/* === 🌸 Base Overlay Styling === */
+.flower-overlay {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s ease, transform 1.5s ease;
+}
+
+.flower-overlay img {
+  width: 50%;
+  height: 50%;
+}
+
+/* === 🌼 Individual Flower Positions === */
+.flower-top-left {
+  top: 300px;
+  left: 40px;
+}
+
+.flower-bottom-right {
+  left: 70%;
+}
+
+.flower-top-right {
+  display: none; /* Hidden by default (desktop) */
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: opacity 1.2s ease, transform 1.5s ease;
+}
+
+.flower-top-right img {
+  width: 200px;
+  height: auto;
+}
+
+/* === ✨ Scroll Animation Classes === */
+.flower-overlay.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.flower-top-left.animate-in {
+  transform: translateY(-20px);
+}
+
+.flower-bottom-right.animate-in {
+  transform: translateY(20px);
+}
+
+.flower-top-right.animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* === 📱 Mobile-Specific Rules === */
+@media (max-width: 991.98px) {
+  .flower-overlay {
+    display: none; /* Hide all overlays by default on mobile */
+    padding-top: 600px;
+  }
+
+  .flower-top-right {
+    display: block !important; /* Override to show only this one */
+  }
+}
+
+
+
+
+
+/* === Desktop Flower === */
+.about-flower-desktop {
+  position: absolute;
+  bottom: 20px;
+  left: 30px;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s ease, transform 1.5s ease;
+}
+
+.about-flower-desktop img {
+  width: 25%;
+  height: auto;
+}
+
+.about-flower-desktop.animate-in {
+  opacity: 1;
+  transform: translateY(20px);
+}
+
+/* === Mobile Flower === */
+.about-flower-mobile {
+  display: none;
+  width: 100%;
+  text-align: left;
+  margin-top: -100px;
+  margin-bottom: -30px;
+  opacity: 0;
+  transform: translateX(-100px); /* Start off-screen to the left */
+  transition: opacity 1.2s ease, transform 1.5s ease;
+}
+
+.about-flower-mobile img {
+  width: 200px;
+  height: auto;
+}
+
+/* === Fly-in from left === */
+.about-flower-mobile.animate-in {
+  opacity: 1;
+  transform: translateX(0); /* Slide into view */
+}
+
+/* === Responsive Visibility === */
+@media (max-width: 768px) {
+  .about-flower-desktop {
+    display: none;
+  }
+
+  .about-flower-mobile {
+    display: block;
+  }
+}
+
+
+/* === 🌸 Section Styling === */
+.offers-section {
+  background: url("{% static 'bridals/img/offers-bg.jpg' %}") no-repeat center center;
+  background-size: cover;
+  padding: 100px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.offers-heading {
+  text-align: center;
+  font-size: 36px;
+  font-family: 'Cinzel', serif;
+  color: #d4af37;
+  margin-bottom: 10px;
+}
+
+.offers-subheading {
+  text-align: center;
+  font-size: 18px;
+  font-family: 'Segoe UI', sans-serif;
+  margin-bottom: 50px;
+}
+
+/* === 💍 Offer Cards === */
+.offer-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.offer-image-wrapper {
+  position: relative;
+  text-align: center;
+}
+
+.offer-img {
+  width: 100%;
+  height: auto;
+  z-index: 1;
+  position: relative;
+}
+
+/* === 🌼 Unique Overlay Flowers === */
+.offer-flower {
+  position: absolute;
+  z-index: 2;
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+.offer-flower img {
+  width: 120px;
+  height: auto;
+}
+
+/* Initial Positions */
+.offer-flower-sell {
+  top: 20px;
+  left: 30px;
+}
+
+.offer-flower-rental {
+  top: 20px;
+  right: 30px;
+}
+
+/* === ✨ Text Styling === */
+.offer-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  text-align: center;
+}
+
+.offer-title {
+  font-size: 40px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: #000000;
+  background: linear-gradient(to right, #000000, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background 0.6s ease;
+}
+
+/* === 🪄 Hover Effects === */
+.offer-card:hover .offer-flower {
+  transform: translateY(-100px) scale(1.2);
+  opacity: 0;
+}
+
+.offer-card:hover .offer-title {
+  background: linear-gradient(to right, #d4af37, #d4af37); /* Brush color effect */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* === 🌼 Center Flower Styling === */
+.offer-flower-center {
+  position: absolute;
+  top: 50%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  pointer-events: none;
+  opacity: 1;
+  
+}
+
+.offer-flower-center img {
+  width: 400px;
+  height: auto;
+}
+
+/* === 📱 Hide on Mobile === */
+@media (max-width: 991.98px) {
+  .offer-flower-center {
+    display: none;
+  }
+}
+
+
+
+
+
+
+
 
 
   </style>
@@ -2426,10 +2674,17 @@ function saveThenLogout() {
 
 
 <!-- About-Us area -->
-<section id="about" class="banner">
+<section id="about" class="banner position-relative">
+  <!-- Desktop Flower Overlay -->
+  <div class="about-flower-desktop">
+    <img src="{% static 'bridals/img/flo2.png' %}" alt="About Flower Desktop">
+  </div>
+
   <!-- Banner Text -->
-  <div class="banner-text">
-    <h1 class="about-heading" style="font-family: 'Killery Bentom DEMO VERSION'; font-size: 50px; font-weight: lighter;">Welcome to <span style="font-size: 50px; color: #d4af37; font-family: 'Cinzel', serif; font-weight: bold;"> <br>Graziella Bridals</span></h1>
+  <div class="banner-text" id="about-flower-trigger">
+    <h1 class="about-heading" style="font-family: 'Killery Bentom DEMO VERSION'; font-size: 50px; font-weight: lighter;">
+      Welcome to <span style="font-size: 50px; color: #d4af37; font-family: 'Cinzel', serif; font-weight: bold;"><br>Graziella Bridals</span>
+    </h1>
     <h2 style="font-family: 'Georgia', serif; font-size: 20px; font-weight: bold;">Where dreams meet elegance</h2>
     <p style="font-family: 'Segoe UI', sans-serif;">
       We’re thrilled to have you here! At <strong style="font-size: 20px; color: #d4af37; font-family: 'Cinzel', serif; font-weight: bold;">Graziella Bridals</strong>, every bride is a queen—
@@ -2439,9 +2694,14 @@ function saveThenLogout() {
     </p>
   </div>
 
-  <!-- Overlay Image Slider - centered piece -->
+  <!-- Mobile Flower Overlay -->
+  <div class="about-flower-mobile">
+    <img src="{% static 'bridals/img/flo3.png' %}" alt="About Flower Mobile">
+  </div>
+
+  <!-- Overlay Image Slider -->
   <div class="overlay-container">
-    <img class="overlay-slide active" src="{% static 'bridals/img/12.jpg' %}" alt="Overlay 1">
+    <img class="overlay-slide active" src="{% static 'bridals/img/flo1.png' %}" alt="Overlay 1">
   </div>
 
   <!-- Main Image Slider -->
@@ -2450,10 +2710,55 @@ function saveThenLogout() {
   </div>
 </section>
 
+
 <a href="https://wa.me/+256772463889" target="_blank" style="position:fixed; bottom:20px; right:20px; z-index:999; display:flex; align-items:center; gap:8px; background-color:#ffffff; padding:10px 15px; border-radius:30px; box-shadow:0 4px 8px rgba(0,0,0,0.15); text-decoration:none; font-family:'Cinzel', serif;">
   <img id="whatsapp-icon" src="{% static 'bridals/img/whatsapp-icon.png' %}" alt="Chat with us" style="width:30px; height:30px;" />
   <span id="whatsapp-chat-text" style="color:#d4af37; font-size:16px; font-weight:bold;">Let's Chat</span>
 </a>
+
+
+
+<!-- 💍 Our Offers Section -->
+<section class="offers-section position-relative">
+  <div class="container-fluid">
+    <h2 class="offers-heading">Our Offers</h2>
+    <p class="offers-subheading">MORE WAYS TO SAVE</p>
+
+    <div class="row gx-5 justify-content-center">
+      <!-- SELL Container -->
+      <div class="col-md-6 offer-card">
+        <div class="offer-image-wrapper">
+          <img src="{% static 'bridals/img/sell.png' %}" alt="Sell Dress" class="offer-img">
+          <div class="offer-flower offer-flower-sell">
+            <img src="{% static 'bridals/img/flo1.png' %}" alt="Flower Overlay">
+          </div>
+          <div class="offer-text">
+            <h3 class="offer-title">BUY</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- 🌸 Static Center Flower (Desktop Only) -->
+      <div class="offer-flower offer-flower-center">
+        <img src="{% static 'bridals/img/flo1.png' %}" alt="Center Flower">
+      </div>
+
+      <!-- RENTAL Container -->
+      <div class="col-md-6 offer-card">
+        <div class="offer-image-wrapper">
+          <img src="{% static 'bridals/img/rental.png' %}" alt="Rental Dress" class="offer-img">
+          <div class="offer-flower offer-flower-rental">
+            <img src="{% static 'bridals/img/flo1.png' %}" alt="Flower Overlay">
+          </div>
+          <div class="offer-text">
+            <h3 class="offer-title">RENT</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 
 
@@ -2553,9 +2858,9 @@ function saveThenLogout() {
 
     <!-- Image Area -->
     <div class="sent-img">
-      <img src="{% static 'bridals/img/Bridal1.jpg' %}" alt="Bridal Image 1" class="slide active">
-      <img src="{% static 'bridals/img/13.jpg' %}" alt="Bridal Image 2" class="slide">
-      <img src="{% static 'bridals/img/Bridal4.jpg' %}" alt="Bridal Image 3" class="slide">
+      <img src="{% static 'bridals/img/Bridal2.png' %}" alt="Bridal Image 1" class="slide active">
+      <img src="{% static 'bridals/img/13.png' %}" alt="Bridal Image 2" class="slide">
+      <img src="{% static 'bridals/img/Bridal5.png' %}" alt="Bridal Image 3" class="slide">
     </div>
   </div>
 </section>
@@ -2712,9 +3017,25 @@ function saveThenLogout() {
 
 
 <!-- Bridal Gowns Section -->
-<section class="py-5">
+<section class="py-5 position-relative" id="bridal-gowns">
+  <!-- Decorative Flower Overlays -->
+  <div class="flower-overlay flower-bottom-right">
+    <img src="{% static 'bridals/img/flo1.png' %}" alt="Flower Bottom Right">
+  </div>
+
+  <div class="flower-overlay flower-top-left">
+    <img src="{% static 'bridals/img/flo1.png' %}" alt="Flower Top Left">
+  </div>
+
+<!-- ✅ New Top-Right Flower (Mobile Only) -->
+<div class="flower-overlay flower-top-right">
+  <img src="{% static 'bridals/img/flo1.png' %}" alt="Flower Top Right">
+</div>
+
+
+
   <div class="container-fluid">
-    <div class="row justify-content-center gx-5">
+    <div class="row justify-content-center gx-4">
       <!-- Text Block -->
       <div class="col-xl-5 col-lg-6 mb-4">
         <div class="text-card p-5" id="bro">
@@ -2740,6 +3061,7 @@ function saveThenLogout() {
     </div>
   </div>
 </section>
+
 
 
 
@@ -2913,6 +3235,56 @@ function saveThenLogout() {
 
 {% if csrf_token %}
 <script>
+// 🔐 controlling flowers in the about-us side
+  const flowerDesktop = document.querySelector('.about-flower-desktop');
+  const flowerMobile = document.querySelector('.about-flower-mobile');
+  const aboutTrigger = document.getElementById('about-flower-trigger');
+
+  let scrollTimeout;
+
+  function handleAboutScroll() {
+    const rect = aboutTrigger.getBoundingClientRect();
+    const inView = rect.top < window.innerHeight && rect.bottom > 0;
+
+    if (inView) {
+      flowerDesktop?.classList.add('animate-in');
+      flowerMobile?.classList.add('animate-in');
+    } else {
+      flowerDesktop?.classList.remove('animate-in');
+      flowerMobile?.classList.remove('animate-in');
+    }
+  }
+
+  function debounceScroll() {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(handleAboutScroll, 50); // Slight delay for smoother transitions
+  }
+
+  window.addEventListener('scroll', debounceScroll);
+  window.addEventListener('load', handleAboutScroll);
+
+// 🔐 controlling flowers in the Bidal gowns side
+  const flowers = document.querySelectorAll('.flower-overlay');
+  const triggerSection = document.getElementById('bro');
+
+  function handleScroll() {
+    const triggerTop = triggerSection.getBoundingClientRect().top;
+    const triggerBottom = triggerSection.getBoundingClientRect().bottom;
+    const viewportHeight = window.innerHeight;
+
+    const inView = triggerTop < viewportHeight && triggerBottom > 0;
+
+    flowers.forEach(flower => {
+      if (inView) {
+        flower.classList.add('animate-in');
+      } else {
+        flower.classList.remove('animate-in');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('load', handleScroll);
 
   document.querySelectorAll('.blog-image-wrapper').forEach(wrapper => {
     const images = wrapper.querySelectorAll('.blog-image');
@@ -3377,29 +3749,23 @@ closePopup.addEventListener("click", () => {
     });
 
 
-// About - us area  
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    const parent = entry.target;
+  // 🌸 Scroll Reveal for About Us Section
+  const aboutSection = document.getElementById('about');
 
-    if (entry.isIntersecting) {
-      parent.classList.add('reveal');
-    } else {
-      parent.classList.remove('reveal'); // remove to allow repeat animation
-    }
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        aboutSection.classList.add('reveal');
+      } else {
+        aboutSection.classList.remove('reveal'); // Allows repeat animation
+      }
+    });
+  }, {
+    threshold: 0.4 // Trigger when ~40% of the section is visible
   });
-}, {
-  threshold: 0.4 // Trigger when ~40% of the section is visible
-});
 
-// Observe both containers
-document.querySelectorAll('.main-container, .overlay-container').forEach(el => {
-  observer.observe(el);
-});
-
-
-
-   
+  // Observe the section itself
+  observer.observe(aboutSection);
 
    
 
