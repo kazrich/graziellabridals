@@ -27,6 +27,89 @@
 
 
   <style>
+/* === Section Wrapper === */
+#featured-stylists {
+  background-color: #fff;
+  padding: 60px 20px;
+}
+
+/* === Container === */
+.bridal-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* === Grid Layout === */
+.gallery-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+/* === Grid Item === */
+.gallery-item {
+  flex: 1 1 calc(33.333% - 30px);
+  max-width: calc(33.333% - 30px);
+  box-sizing: border-box;
+}
+
+/* === Card Styling === */
+.stylist-card {
+  border-radius: 0px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.stylist-card:hover {
+  transform: translateY(-5px);
+}
+
+/* === Image Frame === */
+.image-frame {
+  width: 100%;
+  height: 0;
+  padding-bottom: 130%;
+  position: relative;
+  overflow: hidden;
+}
+
+.stylist-photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.stylist-photo.is-visible {
+  opacity: 1;
+}
+
+/* === Responsive Breakpoints === */
+@media (max-width: 992px) {
+  .gallery-item {
+    flex: 1 1 calc(50% - 30px);
+    max-width: calc(50% - 30px);
+  }
+}
+
+@media (max-width: 576px) {
+  .gallery-item {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .image-frame {
+    padding-bottom: 150%;
+  }
+}
+
+
+
 
 .wishlist-badge {
   position: absolute;
@@ -2691,21 +2774,49 @@ function saveThenLogout() {
     </p>
   </div>
 
-  <!-- Mobile Flower Overlay -->
-  <div class="about-flower-mobile">
-    <img src="{% static 'bridals/img/flo3.png' %}" alt="About Flower Mobile">
-  </div>
 
-  <!-- Overlay Image Slider -->
-  <div class="overlay-container">
-    <img class="overlay-slide active" src="{% static 'bridals/img/flo1.png' %}" alt="Overlay 1">
-  </div>
+
+
 
   <!-- Main Image Slider -->
   <div class="main-container">
     <img class="main-slide active" src="{% static 'bridals/img/face.png' %}" alt="Main 1">
   </div>
 </section>
+
+
+<!-- Featured Stylists Section -->
+<section id="featured-stylists" style="padding: 60px 20px;">
+  <div class="bridal-wrapper">
+    <div class="gallery-grid gy-5">
+      
+      <!-- Stylist Feature 1 -->
+      <div class="gallery-item col-md-6 col-lg-4">
+        <div class="stylist-card">
+          <div class="image-frame">
+            <img src="{% static 'bridals/img/beauty.jpg' %}" class="stylist-photo is-visible" alt="Spring Dresses 1">
+          </div>
+        </div>
+      </div>
+
+      <!-- Stylist Feature 2 -->
+      <div class="gallery-item col-md-6 col-lg-4">
+        <div class="stylist-card">
+          <div class="image-frame">
+            <img src="{% static 'bridals/img/beauty7.jpg' %}" class="stylist-photo is-visible" alt="Spring Dresses 1">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
 
 
 <a href="https://wa.me/+256772463889" target="_blank" style="position:fixed; bottom:20px; right:20px; z-index:999; display:flex; align-items:center; gap:8px; background-color:#ffffff; padding:10px 15px; border-radius:30px; box-shadow:0 4px 8px rgba(0,0,0,0.15); text-decoration:none; font-family:'Cinzel', serif;">
@@ -3023,12 +3134,13 @@ function saveThenLogout() {
     <img src="{% static 'bridals/img/flo1.png' %}" alt="Flower Top Left">
   </div>
 
-<!-- ✅ New Top-Right Flower (Mobile Only) -->
+<!-- ✅ New Top-Right Flower (Mobile Only) 
 <div class="flower-overlay flower-top-right">
   <img src="{% static 'bridals/img/flo1.png' %}" alt="Flower Top Right">
 </div>
 
 
+-->
 
   <div class="container-fluid">
     <div class="row justify-content-center gx-4">
@@ -3080,14 +3192,14 @@ function saveThenLogout() {
     </div>
 
     <div class="photo-item position-relative text-center">
-      <img src="{% static 'bridals/img/3.jpg' %}" alt="Graziella" class="img-fluid rounded shadow-sm">
+      <img src="{% static 'bridals/img/4.jpg' %}" alt="Graziella" class="img-fluid rounded shadow-sm">
       <button class="wishlist-btn" onclick="addToWishlist('gown3', 'Lace Whisper', '{% static 'bridals/img/3.jpg' %}')">
         <i class="fas fa-heart"></i>
       </button>
     </div>
 
     <div class="photo-item position-relative text-center">
-      <img src="{% static 'bridals/img/4.jpg' %}" alt="Graziella" class="img-fluid rounded shadow-sm">
+      <img src="{% static 'bridals/img/3.jpg' %}" alt="Graziella" class="img-fluid rounded shadow-sm">
       <button class="wishlist-btn" onclick="addToWishlist('gown4', 'Golden Bloom', '{% static 'bridals/img/4.jpg' %}')">
         <i class="fas fa-heart"></i>
       </button>
