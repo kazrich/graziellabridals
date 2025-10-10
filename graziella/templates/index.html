@@ -1382,22 +1382,25 @@ body {
 
 /* Extra small devices (phones) */
 @media (max-width: 480px) {
-  .photo {
-    padding: 0 1rem;       /* Adds left/right spacing */
-    justify-content: space-between;
-    gap: 0.75rem;
+  #bridal-gallery {
+    padding: 0 1rem;
+    justify-content: center;
+    gap: 1rem;
   }
 
-  .photo-item {
-    flex: 1 1 46%;
-    max-width: 46%;
-  }
-
-  .photo-item img {
+  #bridal-gallery .photo-item {
+    flex: 0 0 100%;
     max-width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  #bridal-gallery .photo-item img {
+    width: 100%;
     height: auto;
   }
 }
+
+
 
 
 /* Increase image height on large screens */
@@ -3177,7 +3180,7 @@ function saveThenLogout() {
 
 <!-- Bridal Gowns Gallery Section -->
 <section>
-  <div class="photo d-flex flex-wrap justify-content-center gap-4">
+  <div id="bridal-gallery"  class="photo d-flex flex-wrap justify-content-center gap-4">
     <div class="photo-item position-relative text-center">
       <img src="{% static 'bridals/img/1.jpg' %}" alt="Graziella" class="img-fluid rounded shadow-sm">
       <button class="wishlist-btn" onclick="addToWishlist('gown1', 'Ivory Elegance', '{% static 'bridals/img/1.jpg' %}')">
