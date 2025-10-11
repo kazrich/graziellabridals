@@ -1486,10 +1486,9 @@ body {
 }
 
 
+/* Mobile-only hint visibility */
 .hover-hint {
   position: absolute;
-  opacity: 1 !important;
-  display: block !important;
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
@@ -1498,18 +1497,16 @@ body {
   font-size: 0.75rem;
   padding: 4px 8px;
   border-radius: 4px;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
   z-index: 2;
-  pointer-events: none;
+  display: none;
 }
 
-/* Show only on mobile */
 @media (max-width: 768px) {
-  .hover-hint {
-    opacity: 1;
+  .hover-hint.mobile-only {
+    display: block;
   }
 }
+
 
 
 
@@ -3184,39 +3181,39 @@ function saveThenLogout() {
 
 <!-- Bridal Gowns Gallery Section -->
 <section>
-  <div id="bridal-gallery"  class="photo d-flex flex-wrap justify-content-center gap-4">
+  <div id="bridal-gallery" class="photo d-flex flex-wrap justify-content-center gap-4">
+
+    <!-- Gown 1 -->
     <div class="photo-item text-center" onclick="toggleBackView(this)">
       <img src="{% static 'bridals/img/9.jpg' %}" alt="Front View" class="front-img img-fluid rounded shadow-sm">
       <img src="{% static 'bridals/img/6.jpg' %}" alt="Back View" class="back-img img-fluid rounded shadow-sm">
 
-      <div class="hover-hint">
-        <i class="fas fa-sync-alt"></i> Tap or click to view back
+      <div class="hover-hint mobile-only">
+        <i class="fas fa-sync-alt"></i> Tap to view back
       </div>
-
 
       <button class="wishlist-btn" onclick="addToWishlist('gown1', 'Ivory Elegance', '{% static 'bridals/img/9.jpg' %}')">
         <i class="fas fa-heart"></i>
       </button>
     </div>
 
-
-
-
-    <div class="photo-item position-relative text-center" onclick="toggleBackView(this)">
-      <img src="{% static 'bridals/img/graziella_bridals.gif' %}" alt="graziella bridals kampala Uganda" class="img-fluid rounded shadow-sm" class="front-img img-fluid rounded shadow-sm">
+    <!-- Gown 2 (GIF) -->
+    <div class="photo-item text-center" onclick="toggleBackView(this)">
+      <img src="{% static 'bridals/img/graziella_bridals.gif' %}" alt="Graziella Bridals" class="front-img img-fluid rounded shadow-sm">
       <img src="{% static 'bridals/img/beauty2.jpg' %}" alt="Back View" class="back-img img-fluid rounded shadow-sm">
 
-      <div class="hover-hint">
-        <i class="fas fa-sync-alt"></i> Tap or click to view back
+      <div class="hover-hint mobile-only">
+        <i class="fas fa-sync-alt"></i> Tap to view back
       </div>
     </div>
 
+    <!-- Gown 3 -->
     <div class="photo-item text-center" onclick="toggleBackView(this)">
       <img src="{% static 'bridals/img/1.jpg' %}" alt="Front View" class="front-img img-fluid rounded shadow-sm">
       <img src="{% static 'bridals/img/2.jpg' %}" alt="Back View" class="back-img img-fluid rounded shadow-sm">
 
-      <div class="hover-hint">
-        <i class="fas fa-sync-alt"></i> Tap or click to view back
+      <div class="hover-hint mobile-only">
+        <i class="fas fa-sync-alt"></i> Tap to view back
       </div>
 
       <button class="wishlist-btn" onclick="addToWishlist('gown1', 'Ivory Elegance', '{% static 'bridals/img/1.jpg' %}')">
@@ -3224,25 +3221,28 @@ function saveThenLogout() {
       </button>
     </div>
 
-    <div class="photo-item position-relative text-center" onclick="toggleBackView(this)">
-      <img src="{% static 'bridals/img/graziellabridals.gif' %}" alt="graziella bridals kampala Uganda" class="img-fluid rounded shadow-sm" class="front-img img-fluid rounded shadow-sm">
+    <!-- Gown 4 (GIF) -->
+    <div class="photo-item text-center" onclick="toggleBackView(this)">
+      <img src="{% static 'bridals/img/graziellabridals.gif' %}" alt="Graziella Bridals" class="front-img img-fluid rounded shadow-sm">
       <img src="{% static 'bridals/img/beauty.jpg' %}" alt="Back View" class="back-img img-fluid rounded shadow-sm">
 
-      <div class="hover-hint">
-        <i class="fas fa-sync-alt"></i> Tap or click to view back
+      <div class="hover-hint mobile-only">
+        <i class="fas fa-sync-alt"></i> Tap to view back
       </div>
-    </div>    
+    </div>
+
   </div>
 
   <br>
 
-<!-- ASK Button -->
-<div class="text-center mb-5">
-  <a href="#" class="btn btn-inquire" id="askBtn">
-    <i class="fas fa-question-circle"></i> Ask
-  </a>
-</div>
+  <!-- ASK Button -->
+  <div class="text-center mb-5">
+    <a href="#" class="btn btn-inquire" id="askBtn">
+      <i class="fas fa-question-circle"></i> Ask
+    </a>
+  </div>
 </section>
+
 
 
 <!-- Popup Form -->
