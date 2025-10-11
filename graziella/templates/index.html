@@ -21,6 +21,10 @@
     <meta property="og:url" content="https://graziellabridals.onrender.com">
     <meta property="og:type" content="website">
 
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
@@ -1484,6 +1488,8 @@ body {
 
 .hover-hint {
   position: absolute;
+  opacity: 1 !important;
+  display: block !important;
   bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
@@ -1504,6 +1510,8 @@ body {
     opacity: 1;
   }
 }
+
+
 
 
 
@@ -3219,7 +3227,7 @@ function saveThenLogout() {
     <div class="photo-item position-relative text-center" onclick="toggleBackView(this)">
       <img src="{% static 'bridals/img/graziellabridals.gif' %}" alt="graziella bridals kampala Uganda" class="img-fluid rounded shadow-sm" class="front-img img-fluid rounded shadow-sm">
       <img src="{% static 'bridals/img/beauty.jpg' %}" alt="Back View" class="back-img img-fluid rounded shadow-sm">
-      
+
       <div class="hover-hint">
         <i class="fas fa-sync-alt"></i> Tap or click to view back
       </div>
