@@ -1482,6 +1482,31 @@ body {
 }
 
 
+.hover-hint {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Show only on mobile */
+@media (max-width: 768px) {
+  .hover-hint {
+    opacity: 1;
+  }
+}
+
+
+
 
 
 
@@ -3156,6 +3181,11 @@ function saveThenLogout() {
       <img src="{% static 'bridals/img/9.jpg' %}" alt="Front View" class="front-img img-fluid rounded shadow-sm">
       <img src="{% static 'bridals/img/6.jpg' %}" alt="Back View" class="back-img img-fluid rounded shadow-sm">
 
+      <div class="hover-hint">
+        <i class="fas fa-sync-alt"></i> Tap or click to view back
+      </div>
+
+
       <button class="wishlist-btn" onclick="addToWishlist('gown1', 'Ivory Elegance', '{% static 'bridals/img/9.jpg' %}')">
         <i class="fas fa-heart"></i>
       </button>
@@ -3163,21 +3193,36 @@ function saveThenLogout() {
 
 
 
-    <div class="photo-item position-relative text-center">
-      <img src="{% static 'bridals/img/graziella_bridals.gif' %}" alt="graziella bridals kampala Uganda" class="img-fluid rounded shadow-sm">
+
+    <div class="photo-item position-relative text-center" onclick="toggleBackView(this)">
+      <img src="{% static 'bridals/img/graziella_bridals.gif' %}" alt="graziella bridals kampala Uganda" class="img-fluid rounded shadow-sm" class="front-img img-fluid rounded shadow-sm">
+      <img src="{% static 'bridals/img/beauty2.jpg' %}" alt="Back View" class="back-img img-fluid rounded shadow-sm">
+
+      <div class="hover-hint">
+        <i class="fas fa-sync-alt"></i> Tap or click to view back
+      </div>
     </div>
 
     <div class="photo-item text-center" onclick="toggleBackView(this)">
       <img src="{% static 'bridals/img/1.jpg' %}" alt="Front View" class="front-img img-fluid rounded shadow-sm">
       <img src="{% static 'bridals/img/2.jpg' %}" alt="Back View" class="back-img img-fluid rounded shadow-sm">
 
+      <div class="hover-hint">
+        <i class="fas fa-sync-alt"></i> Tap or click to view back
+      </div>
+
       <button class="wishlist-btn" onclick="addToWishlist('gown1', 'Ivory Elegance', '{% static 'bridals/img/1.jpg' %}')">
         <i class="fas fa-heart"></i>
       </button>
     </div>
 
-    <div class="photo-item position-relative text-center">
-      <img src="{% static 'bridals/img/graziellabridals.gif' %}" alt="graziella bridals kampala Uganda" class="img-fluid rounded shadow-sm">
+    <div class="photo-item position-relative text-center" onclick="toggleBackView(this)">
+      <img src="{% static 'bridals/img/graziellabridals.gif' %}" alt="graziella bridals kampala Uganda" class="img-fluid rounded shadow-sm" class="front-img img-fluid rounded shadow-sm">
+      <img src="{% static 'bridals/img/beauty.jpg' %}" alt="Back View" class="back-img img-fluid rounded shadow-sm">
+      
+      <div class="hover-hint">
+        <i class="fas fa-sync-alt"></i> Tap or click to view back
+      </div>
     </div>    
   </div>
 
